@@ -1,2 +1,21 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<h1>Sign in</h1>
+
+<%= form_tag sessions_path %>
+  <div class="clearfix field">
+    <%= label_tag :username %>
+    <div class="input">
+      <%= text_field_tag :username %>
+    </div>
+  </div>
+  <div class="clearfix field">
+    <%= label_tag :password %>
+    <div class="input">
+      <%= password_field_tag :password %>
+    </div>
+  </div>
+  <div class="actions">
+    <%= submit_tag "Sign in", :class => "btn primary" %>
+  </div>
+
+
+<p>New user? <%= link_to "Sign up now!", signup_path %></p>

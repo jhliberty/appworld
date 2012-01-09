@@ -7,11 +7,15 @@
   <div class="topbar">
     <div class="fill">
       <div class="container">
-        <a class="brand" href="#">App World</a>
+        <%= link_to "App World", root_path, :class => "brand"%>
         <ul class="nav">
           <li class="active"><a href="#">Home</a></li>
-          <li><%= link_to "Login", new_session_path %></li>
-          <li><%= link_to "Sign up", new_user_path %></li>
+          <% if current_user %>
+          <li><%= link_to "Signout", signout_path %></li>
+          <% else %>
+          <li><%= link_to "Signin", signin_path %></li>
+          <li><%= link_to "Signup", signup_path %></li>
+          <% end %>
         </ul>
         <form action="" class="pull-right">
           <input class="input-small" type="text" placeholder="Username">
@@ -24,6 +28,9 @@
 
   <div class="container">
     <div class="content">
+      <% flash.each do |key, value| %>
+        <div class="alert-message fade in <%= key %>" data-alert="alert"><a class="close" href="#">&times;</a><%= value %></div>
+      <% end %>
 
       <%= yield %>
       

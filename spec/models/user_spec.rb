@@ -26,6 +26,11 @@ describe User do
       no_email = User.new(@attr.merge(:email => ""))
       no_email.should_not be_valid
     end
+    
+    it "should require a password" do
+      no_password = User.new(@attr.merge(:password => "", :password_confirmation => ""))
+      no_password.should_not be_valid
+    end
   
     it "should require a matching password confirmation" do
       mismatch_confirmation = User.new(@attr.merge(:password_confirmation => "banana"))
