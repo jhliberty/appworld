@@ -8,8 +8,8 @@
     <div class="fill">
       <div class="container">
         <%= link_to "App World", root_path, :class => "brand"%>
-        <ul class="nav">
-          <li class="active"><a href="#">Home</a></li>
+        <ul class="nav" style="float:right;">
+          <li><%= link_to "Home", root_path %></li>
           <% if current_user %>
           <li><%= link_to "Signout", signout_path %></li>
           <% else %>
@@ -17,11 +17,6 @@
           <li><%= link_to "Signup", signup_path %></li>
           <% end %>
         </ul>
-        <form action="" class="pull-right">
-          <input class="input-small" type="text" placeholder="Username">
-          <input class="input-small" type="password" placeholder="Password">
-          <button class="btn primary" type="submit">Sign in</button>
-        </form>
       </div>
     </div>
   </div>
