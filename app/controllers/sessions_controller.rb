@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   def create
     if @user = login(params[:username], params[:password], params[:remember_me])
       flash[:success] = "You have signed into App World!"
-      redirect_back_or_to root_path
+      redirect_back_or_to dashboard_path
     else
       render :new
     end
