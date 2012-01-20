@@ -61,7 +61,7 @@ describe UsersController do
       
       it "should redirect to the root page" do
         post :create, :user => @attr
-        response.should redirect_to(root_path)
+        response.should redirect_to(dashboard_path)
       end
       
       it "should have a welcome message" do

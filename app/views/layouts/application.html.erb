@@ -9,8 +9,8 @@
       <div class="container">
         <%= link_to "App World", root_path, :class => "brand"%>
         <ul class="nav" style="float:right;">
-          <li><%= link_to "Home", root_path %></li>
           <% if current_user %>
+          <li><%= link_to "Dashboard", dashboard_path %></li>
           <li><%= link_to "Signout", signout_path %></li>
           <% else %>
           <li><%= link_to "Signin", signin_path %></li>

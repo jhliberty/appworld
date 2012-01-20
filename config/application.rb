@@ -50,5 +50,13 @@ module Appworld
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    
+    # AWS setup
+    AWS::S3::Base.establish_connection!(
+    	:access_key_id 		=> 'AKIAIGLU45ZDQ4GSTWKA',
+    	:secret_access_key  => 'FjrMGAjSrpJmlaoYm4T5Bm7GQ0h17wuobNSSi/iG'
+    )
+
+    BUCKET = "jhliberty"
   end
 end

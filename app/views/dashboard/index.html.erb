@@ -1,2 +1,19 @@
-<h1>Dashboard#index</h1>
-<p>Find me in app/views/dashboard/index.html.erb</p>
+<h1>Dashboard</h1>
+<h2>Upload a new object</h2>
+<%= form_tag upload_path, :method => "post", :multipart => true do %>
+<%= file_field_tag "file" %>
+<%= submit_tag "Upload", :class => "btn primary" %>
+<% end %>
+<section id="main">
+  <h2>Object List</h2>
+  <table>
+   <% @objects.each do |object| %>
+     <tr>
+       <td><%= object.key %></td>
+       <td><%= link_to "Download", "http://s3.amazonaws.com/#{@bucket}/#{object.key}" %></td>
+       <!-- <td><%= link_to "Torrent", object.torrent %></td> -->
+       <td><%= link_to "Delete", "dashboard/delete/?object=" + object.key, :confirm => 'Are you sure you want to delete ' + object.key + '?' %></td>
+     </tr>
+   <% end %>
+  </table>
+</section>

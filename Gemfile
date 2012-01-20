@@ -4,7 +4,7 @@ gem 'rails', '3.1.3'
 gem 'jquery-rails'
 gem 'sorcery'
 gem 'simple_form'
-gem 's3'
+gem 'aws-s3', :require => 'aws/s3'
 
 group :test, :development do
   gem 'sqlite3'
