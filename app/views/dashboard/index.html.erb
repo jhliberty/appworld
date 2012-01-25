@@ -11,7 +11,7 @@
      <tr>
        <td><%= object.key %></td>
        <td><%= link_to "Download", "http://s3.amazonaws.com/#{@bucket}/#{object.key}" %></td>
-       <!-- <td><%= link_to "Torrent", object.torrent %></td> -->
+       <td><%= link_to "Torrent", "http://s3.amazonaws.com/#{@bucket}/#{object.key}?torrent" %></td>
        <td><%= link_to "Delete", "dashboard/delete/?object=" + object.key, :confirm => 'Are you sure you want to delete ' + object.key + '?' %></td>
      </tr>
    <% end %>
