@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
   
+  has_many :charges
+  has_many :uploads, :through => :charges
+  
    attr_accessible :email, :password, :password_confirmation, :username
    
    validates_confirmation_of   :password
