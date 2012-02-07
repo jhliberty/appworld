@@ -27,4 +27,7 @@ Appworld::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  
+  Stripe.api_key = "yk16b8ZZgZXWm9AWLwjUv8cGtuh3GwRd"
+  STRIPE_PUBLIC_KEY = "pk_UEBbyUVhJR7WTLiNL1UEVhbsuzbIv"
 end
