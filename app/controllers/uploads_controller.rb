@@ -5,7 +5,7 @@ class UploadsController < ApplicationController
   end
   
   def create
-  	if AWS::S3::S3Object.store(sanitize_filename(params[:file].original_filename), params[:file].read, BUCKET, :access => :public_read)
+  	if AWS::S3::S3Object.store(sanitize_filename(params[:file].original_filename), params[:file].read, BUCKET, :access => :authenticated_read)
   	  flash[:notice] = "Yay!"
   	  redirect_to new_upload_path
     else

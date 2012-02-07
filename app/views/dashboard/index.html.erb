@@ -1,11 +1,6 @@
-<h1>Dashboard</h1>
-<h2>Upload a new object</h2>
-<%= form_tag uploads_path, :method => "post", :multipart => true do %>
-<%= file_field_tag "file" %>
-<%= submit_tag "Upload", :class => "btn primary" %>
-<% end %>
 <section id="main">
-  <h2>Object List</h2>
+  <h2>Dashboard</h2>
+  <%= link_to @url, @url %>
   <table>
    <% @objects.each do |object| %>
      <tr>

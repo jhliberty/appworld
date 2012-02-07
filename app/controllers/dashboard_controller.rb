@@ -3,6 +3,7 @@ class DashboardController < ApplicationController
   def index
     @objects = AWS::S3::Bucket.find(BUCKET).objects
     @bucket = BUCKET
+    @url = AWS::S3::S3Object.url_for('eagle3.jpg', BUCKET, :expires_in => 10 * 10, :response_content_disposition => "attachment", :response_content_type => "application/octet-stream")
   end
   
   def upload
