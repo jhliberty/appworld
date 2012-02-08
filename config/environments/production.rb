@@ -57,4 +57,7 @@ Appworld::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+  
+  Stripe.api_key = "yk16b8ZZgZXWm9AWLwjUv8cGtuh3GwRd"
+  STRIPE_PUBLIC_KEY = "pk_UEBbyUVhJR7WTLiNL1UEVhbsuzbIv"
 end
