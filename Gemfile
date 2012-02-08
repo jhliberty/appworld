@@ -11,6 +11,7 @@ gem 'heroku'
 group :production do
   gem "pg"
   gem "thin"
+  gem 'rb-fsevent'
 end
 
 group :test, :development do
