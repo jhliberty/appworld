@@ -9,7 +9,7 @@ class UploadsController < ApplicationController
   	  flash[:notice] = "Yay!"
   	  redirect_to new_upload_path
     else
-  	render new_upload_path, :notice => "Couldn't complete the upload'"
+    	render new_upload_path, :notice => "Couldn't complete the upload'"
   	end
   end
   
@@ -24,7 +24,7 @@ class UploadsController < ApplicationController
   
   private
   def sanitize_filename(file_name)
-    	just_filename = File.basename(file_name)
-   		just_filename.sub(/[^\w\.\-]/,'_')
+  	just_filename = File.basename(file_  name)
+ 		just_filename.sub(/[^\w\.\-]/,'_')
 	end
 end
