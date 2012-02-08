@@ -5,9 +5,9 @@ class UploadsController < ApplicationController
   end
   
   def create
-  	if AWS::S3::S3Object.store(sanitize_filename(params[:file].original_filename), params[:file].read, BUCKET, :access => :authenticated_read)
-  	  flash[:notice] = "Yay!"
-  	  redirect_to new_upload_path
+  	if AWS::S3::S3Object.store(sanitize_filename(params[:file].original_filename), params[:file].read, BUCKET, :access => :authenticated_read, :content_disposition => "attachment; filename=#{params[:file].original_filename}", :content_type => "application/octet-stream", :cache_control => "Cache-Control: must-revalidate, post-check=0, pre-check=0")
+  	  flash[:success] = "Yay!"
+  	  redirect_to dashboard_path
     else
     	render new_upload_path, :notice => "Couldn't complete the upload'"
   	end
@@ -16,7 +16,7 @@ class UploadsController < ApplicationController
   def destroy
     if (params[:object])
   		AWS::S3::S3Object.find(params[:object], BUCKET).delete
-  		redirect_to dashboard_path
+  		redirect_to dashboard_path, :success => "Destroyed!"
   	else
   		render :text => "No object was found to delete!"
   	end
