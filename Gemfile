@@ -8,6 +8,11 @@ gem 'aws-s3', :require => 'aws/s3'
 gem 'stripe'
 gem 'heroku'
 
+group :production do
+  gem "pg"
+  gem "thin"
+end
+
 group :test, :development do
   gem 'sqlite3'
   gem 'rspec-rails'
