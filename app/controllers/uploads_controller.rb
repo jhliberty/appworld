@@ -24,7 +24,7 @@ class UploadsController < ApplicationController
   
   private
   def sanitize_filename(file_name)
-  	just_filename = File.basename(file_  name)
+  	just_filename = File.basename(file_name)
  		just_filename.sub(/[^\w\.\-]/,'_')
 	end
 end

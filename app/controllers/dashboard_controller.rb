@@ -3,7 +3,7 @@ class DashboardController < ApplicationController
   def index
     @objects = AWS::S3::Bucket.find(BUCKET).objects
     @bucket = BUCKET
-    @url = AWS::S3::S3Object.url_for('breakfast.jpg', BUCKET, :expires_in => 120)
+    @url = AWS::S3::S3Object.url_for('breakfast.jpg', BUCKET, :expires_in => 1200)
   end
   
   def upload
