@@ -15,9 +15,12 @@ class UploadsController < ApplicationController
   	    :cache_control => "Cache-Control: must-revalidate, post-check=0, pre-check=0"
 	    )    
   	  @upload = Upload.new(:filename => params[:upload][:file].original_filename.to_s)
-  	  @upload.save
-  	  flash[:success] = "Yay!"
-  	  redirect_to dashboard_path
+  	  if @upload.save
+  	    flash[:success] = "Success, please enter info about your upload."
+  	    redirect_to edit_upload_path(@upload)
+	    else
+	      redirect_to new_upload_path
+      end
     else
     	render new_upload_path, :notice => "Couldn't complete the upload'"
   	end
