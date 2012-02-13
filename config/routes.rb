@@ -4,7 +4,7 @@ Appworld::Application.routes.draw do
 
   get "dashboard/index"
   
-  resources :uploads, :only => [:new, :create]
+  resources :uploads, :only => [:new, :create, :edit]
   resources :sessions
   resources :users
   

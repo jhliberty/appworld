@@ -23,6 +23,10 @@ class UploadsController < ApplicationController
   	end
   end
   
+  def edit
+    @upload = Upload.find(params[:id])
+  end
+  
   def destroy
     if (params[:object])
   		AWS::S3::S3Object.find(params[:object], BUCKET).delete
