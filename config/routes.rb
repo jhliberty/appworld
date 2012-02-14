@@ -1,16 +1,13 @@
 Appworld::Application.routes.draw do
-
-  get "uploads/new"
-
-  get "dashboard/index"
   
-  resources :uploads, :only => [:new, :create, :edit]
+  resources :charges
+  resources :uploads
   resources :sessions
   resources :users
   
+  match "/uploads/new/:charge_id", :to => "uploads#new", :as => "up_app"
   match '/dashboard', :to => "dashboard#index"
-  # match 'dashboard/upload', :to => "dashboard#upload", :as => "upload"
-  match 'dashboard/delete', :to => "dashboard#delete",  :as => "delete"
+  match '/uploads/delete/:id', :to => "uploads#destroy",  :as => "delete"
   match '/signup', :to => 'users#new'
   match '/signin', :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'

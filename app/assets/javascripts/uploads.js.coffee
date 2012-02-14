@@ -8,7 +8,7 @@ jQuery ->
   
 upload = 
   setupForm: ->
-    $('#new_upload').submit ->
+    $('#new_charge').submit ->
       $('input[type=submit]').prop('disabled', true)
       if $('#card_number').length
         upload.processCard()
@@ -28,8 +28,8 @@ upload =
   
   handleStripeResponse: (status, response) ->
     if status == 200
-      $('#upload_stripe_card_token').val(response.id)
-      $('#new_upload')[0].submit()
+      $('#charge_stripe_card_token').val(response.id)
+      $('#new_charge')[0].submit()
     else
       $('#stripe-error-message.alert-message.block-message.error').text(response.status)
       $('input[type=submit]').attr('disabled', false)

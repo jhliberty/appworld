@@ -1,0 +1,17 @@
+<%= form_for @upload do |f| %>
+  <div class="field">
+    <%= f.label :filename %>
+    <div class="input">
+      <%= f.text_field :filename %>
+    </div>
+  </div>
+  <div class="field">
+    <%= f.label :description %>
+    <div class="input">
+      <%= f.text_area :description %>
+    </div>
+  </div>
+  <div class="action">
+    <%= f.submit :class => "btn primary" %>
+  </div>
+<% end %>

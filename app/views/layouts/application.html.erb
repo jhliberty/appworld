@@ -11,7 +11,7 @@
         <ul class="nav" style="float:right;">
           <% if current_user %>
             <li><%= link_to "Dashboard", dashboard_path %></li>
-            <li><%= link_to "Uploads", new_upload_path %></li>
+            <li><%= link_to "Uploads", new_charge_path %></li>
             <li><%= link_to "Signout", signout_path %></li>
           <% else %>
             <li><%= link_to "Signin", signin_path %></li>

@@ -14,67 +14,20 @@
           </div>
         <% end %>
         
-        <div class="field">
-          <%= label_tag :pay_with_card, :style => "width:280px;" do %>
-            <%= image_tag "visa.png" %>
-            <%= image_tag "mastercard.png" %>
-            <%= image_tag "discover.png" %>
-            <%= image_tag "american_express.png" %>
-            <%= image_tag "jcb.png" %>
-          <% end %>
-          <div class="clearfix">
-            <%= hidden_field_tag :stripe_card_token %>
-          </div><!-- .clearfix -->
-        </div><!-- .field -->
-        
+       
+        <%= f.hidden_field :charge_id %>
 
         <div class="field">
           <div class="clearfix">
             <%= f.file_field "file" %>
           </div>
         </div>
+      
         
-        <div id="billing_fields">
-          <noscript><p>This form requires Javascript to use</p></noscript>
-          <div id="credit-card">
-            
-            <div id="credit-card-errors" style="display:none">
-              <div id="stripe-error-message" class="alert-message block-message error">
-              </div><!-- #stripe-error-message -->
-            </div>  <!-- #credit-card-errors -->
-            
-            <div class="clearfix">
-                <%= label_tag :card_number, "Credit Card Number"%>
-                <div class="input">
-                  <%= text_field_tag :card_number, nil, name: nil %>
-                </div><!-- .input -->
-            </div><!-- .clearfix -->
-            
-            <div class="clearfix">
-              <%= label_tag :card_code, "Security Code on Card (CVV)" %>
-              <div class="input">
-                <%= text_field_tag :card_code, nil, name: nil %>
-              </div><!-- .input -->
-            </div><!-- .clearfix -->
-            
-            <div class="clearfix">
-              <%= label_tag :card_month, "Card Expiration"%>
-              <div class="input">
-                <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month", :class => "medium" }%>
-                <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", :class => "small" }%>
-              </div><!-- .input -->
-            </div><!-- .clearfix -->
-            
-            <span class="note">
-              Your credit card details will be sent directly to our payment processor
-            </span><!-- .note -->
-            
-            <div class="actions">
-              <%= f.submit "Upload", :class => "btn primary upload"%>
-            </div><!-- .actions -->
-            
-          </div><!-- #credit-card -->
-        </div><!-- #billing_fields -->
+        <div class="actions">
+          <%= f.submit "Upload", :class => "btn primary upload"%>
+        </div><!-- .actions -->
+        
       <% end %>
     </fieldset>
   </div>
