@@ -11,22 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120210014517) do
+ActiveRecord::Schema.define(:version => 20120214082522) do
 
   create_table "charges", :force => true do |t|
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "stripe_card_token"
   end
 
   create_table "uploads", :force => true do |t|
     t.string   "filename"
-    t.string   "url"
     t.integer  "downloads"
     t.integer  "charge_id"
+    t.string   "original_filename"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "original_filename"
   end
 
   create_table "users", :force => true do |t|
@@ -38,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20120210014517) do
     t.datetime "updated_at"
     t.string   "remember_me_token"
     t.datetime "remember_me_token_expires_at"
+    t.string   "stripe_customer_token"
   end
 
   add_index "users", ["remember_me_token"], :name => "index_users_on_remember_me_token"

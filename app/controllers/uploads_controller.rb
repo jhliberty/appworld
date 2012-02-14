@@ -1,7 +1,13 @@
 class UploadsController < ApplicationController
+  before_filter :not_authenticated
   
   def new
-    @upload = Upload.new
+    if params[:charge_id]
+      @user = current_user
+      @charge = Charge.where(:user_id => @user.id).last
+      @upload = @charge.build_upload
+      @upload.charge_id = params[:charge_id]
+    end
   end
   
   def create
@@ -14,7 +20,9 @@ class UploadsController < ApplicationController
   	    :content_type => "application/octet-stream", 
   	    :cache_control => "Cache-Control: must-revalidate, post-check=0, pre-check=0"
 	    )    
-  	  @upload = Upload.new(:filename => params[:upload][:file].original_filename.to_s)
+	    @user = current_user
+      @charge = Charge.where(:user_id => @user.id).last
+      @upload = @charge.build_upload(:original_filename => params[:upload][:file].original_filename.to_s)
   	  if @upload.save
   	    flash[:success] = "Success, please enter info about your upload."
   	    redirect_to edit_upload_path(@upload)
@@ -30,9 +38,23 @@ class UploadsController < ApplicationController
     @upload = Upload.find(params[:id])
   end
   
+  def update
+    @upload = Upload.find(params[:id])
+    if @upload.update_attributes(params[:upload])
+      flash[:success] = "Yes"
+      redirect_to edit_upload_path(@upload)
+    else
+      flash[:failure].now = "No"
+      render edit_upload_path(@upload)
+    end
+  end
+  
   def destroy
-    if (params[:object])
-  		AWS::S3::S3Object.find(params[:object], BUCKET).delete
+    if (params[:id])
+      @upload = Upload.find(params[:id])
+  		if AWS::S3::S3Object.find(@upload.original_filename, BUCKET).delete
+  		  @upload.destroy
+  		end
   		redirect_to dashboard_path, :success => "Destroyed!"
   	else
   		render :text => "No object was found to delete!"

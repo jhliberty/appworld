@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   has_many :charges
   has_many :uploads, :through => :charges
   
-   attr_accessible :email, :password, :password_confirmation, :username
+   attr_accessible :email, :password, :password_confirmation, :username, :stripe_customer_token
    
    validates_confirmation_of   :password
    validates_presence_of       :password, :on => :create
