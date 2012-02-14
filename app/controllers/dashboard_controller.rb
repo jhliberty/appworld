@@ -1,9 +1,8 @@
 class DashboardController < ApplicationController
+  before_filter :not_authenticated
   
   def index
     @user = current_user
     @uploads = @user.uploads
-    @objects = AWS::S3::Bucket.find(BUCKET).objects
-    @bucket = BUCKET
   end
 end
